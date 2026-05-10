@@ -5,7 +5,7 @@ pw = sync_playwright().start() #assigns expression to pw variable
 
 browser = pw.firefox.launch(
     headless = False,
-    slow_mo = 20000
+    slow_mo = 2000
 
 ) #launches firefox
 
@@ -21,6 +21,8 @@ page.get_by_role("button").get_by_text(
 ).nth(1).click() #locates a button on the page that's titled 'Search' in the html and clicks it
 #The .nth() function makes it so that the button is clicked the 2nd time since there's 2 buttons titled 'Search'
 #.nth(0) is the first instance, .nth(1) is the second instance, and so on
+
+
 
 #Xpath can target elements with specific property values
 links = page.locator(
