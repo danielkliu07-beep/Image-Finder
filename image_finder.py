@@ -1,6 +1,5 @@
 import agent_functions as agent
 from get_image import get_unsplash_url
-import base64
 
 def start_program():
     print("Welcome to the AI Agent Finder.")
