@@ -1,6 +1,5 @@
 import requests
 
-#frijscSLMdItFA1ef1falftsVtrMU9Un_DNjw_OakIs
 def get_unsplash_url(image_description, access_key):
     url = "https://api.unsplash.com/photos/random"
 
