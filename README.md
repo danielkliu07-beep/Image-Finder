@@ -1,2 +1,2 @@
 # Image-Finder
-An image finder made using Playwright, Langchain, and Ollama, on Unsplash.
+An image finder made using Langchain, Ollama, and Unsplash.

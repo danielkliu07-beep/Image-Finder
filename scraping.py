@@ -2,6 +2,8 @@ from playwright.sync_api import sync_playwright
 from urllib.request import urlretrieve 
 
 
+
+
 def scrape_page_for_image(prompt):
     pw = sync_playwright().start()
 
