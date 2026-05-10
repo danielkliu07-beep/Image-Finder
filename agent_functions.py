@@ -10,6 +10,7 @@ def produce_keyword(user_input):
     Ex: 'Cat by the window' or 'A cat sleeps next to a window'
     Make sure the sentence grammatically makes sense. 
     Do not have a bunch of words next to eachother that doesn't flow into a sentence or a phrase.
+    Do not have stuff like parenthesis in your final response.
 
     Here's the user input: {user_input}
 
@@ -28,22 +29,20 @@ def produce_keyword(user_input):
 def evaluate_image(user_input, image_url):
 
     image_evaluator_template = """
-    You are an image analyzer that analyzes an image and determines if the following image closely matches the user input.
+    You are an image analyzer. Your job is to determine if an image is a reasonable match for what the user wants.
 
-    Answer 'YES' if you feel like the image closely resembles or matches the user input.
-    Answer 'NO' if it doesn't resemble or match the image.
+    Answer 'YES' if the image is somewhat related to the user's request and resembles the user's request.
+    Answer 'NO' only if the image is completely unrelated.
     Answer 'NO' if there are errors associated with the image like it not appearing at all.
 
-    You should only answer 'YES' or 'NO'. Do not answer with any other response. If there's any sort of error, answer 'NO'.
-
-
+    You should only answer 'YES' or 'NO'. Do not answer with any other response.
     """
 
-    model = OllamaLLM(model = "qwen3:0.6b")
+    model = OllamaLLM(model = "llava:latest")
     prompt = ChatPromptTemplate.from_messages([
         ("system", image_evaluator_template),
         ("human", [
-            {"type": "image_url", "image_url": {"url": "{image_url}"}},
+            {"type": "text", "text": "The user wants: '{user_input}'. Does this image reasonably match that? Answer YES or NO."},
             {"type": "text", "text": "{user_input}"}
         ])
     ])
